@@ -25,6 +25,7 @@ public class PlayerEquipment : MonoBehaviour
                 EquipItem("Ammo Clip", LeftHand);
             }
         }
+        //This will de-equip any items currently held in the left hand.
         else if (LeftHandItem != null && Input.GetKeyDown(KeyCode.Q))
         {
             LeftHandItem.Remove(LeftHandItem.gameObject, 0);
@@ -42,12 +43,14 @@ public class PlayerEquipment : MonoBehaviour
                 EquipItem("Gun", RightHand);
             }
         }
+        //This will de-equip any items currently held in the right hand.
         else if (RightHandItem != null && Input.GetKeyDown(KeyCode.E))
         {
             RightHandItem.Remove(RightHandItem.gameObject, 0);
             RightHandItem = null;
         }
 
+        //By pressing LMB, the item in the left hand will be used.
         if (Input.GetMouseButton(0) && LeftHandItem != null)
         {
             LeftHandItem.Use();
@@ -57,6 +60,7 @@ public class PlayerEquipment : MonoBehaviour
             }
 
         }
+        //By pressing RMB, the item in the right hand will be used.
         if (Input.GetMouseButton(1) && RightHandItem != null)
         {
             RightHandItem.Use();
@@ -69,22 +73,15 @@ public class PlayerEquipment : MonoBehaviour
 
     public void EquipItem(string itemName, Transform hand)
     {
+        //It grabs an item from the prefab list based on the given item name.
         GameObject itemPrefab = Resources.Load<GameObject>($"Prefabs/{itemName}");
         if (itemPrefab != null)
         {
-            if (itemName == "Rock")
-            {
-                hand = RightHand;
-            }
-            else if (itemName == "Flashlight" || itemName == "Hat")
-            {
-                hand = LeftHand;
-            }
-
             GameObject newItem = Instantiate(itemPrefab, hand.position, hand.rotation, hand);
             
             Item item = newItem.GetComponent<Item>();
 
+            //Assigns the corresponding hand to the item.
             if (hand == LeftHand)
             {
                 LeftHandItem = item;

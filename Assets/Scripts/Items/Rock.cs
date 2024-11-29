@@ -11,6 +11,7 @@ public class Rock : Item
 
     public override void Use()
     {
+        //Detaches the rock from the player.
         transform.SetParent(null);
 
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -18,6 +19,7 @@ public class Rock : Item
 
         rb.AddForce(transform.forward * ThrowForce, ForceMode.Impulse);
 
+        //Despawns the rock after 5 seconds.
         Remove(this.gameObject, 5f);
     }
 }

@@ -12,10 +12,12 @@ public class Flashlight : Item
 
     private void Start()
     {
+        //Grabbing the light component.
         _spotLight = GetComponentInChildren<Light>();
 
         if (_spotLight != null)
         {
+            //Immediately turning it off.
             _spotLight.enabled = false;
         }
     }
@@ -26,6 +28,7 @@ public class Flashlight : Item
         {
             if (_spotLight != null)
                 {
+                    //Flipping the flashlight mode.
                     isOn = !isOn;
                     _spotLight.enabled = isOn;
                 }

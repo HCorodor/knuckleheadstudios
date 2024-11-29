@@ -13,6 +13,7 @@ public class AmmoClip : Item
 
         if (playerEquipment != null && playerEquipment.RightHandItem != null)
         {
+            //Grabs the gun component from the player equipment to access the reload function.
             Gun gun = playerEquipment.RightHandItem.GetComponent<Gun>();
 
             if (gun != null)

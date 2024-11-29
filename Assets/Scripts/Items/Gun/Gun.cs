@@ -23,6 +23,7 @@ public class Gun : Item
 
     private void Update()
     {
+        //When MMB is pressed, the mode of the gun changes.
         if (Input.GetMouseButtonDown(2))
         {
             isAutomatic = !isAutomatic;
@@ -61,6 +62,7 @@ public class Gun : Item
         }
     }
 
+    //Reload function that is being called by the AmmoClip script.
     public void Reload()
     {
         CurrentAmmo = MaxAmmo;
